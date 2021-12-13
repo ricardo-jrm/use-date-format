@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🟣 `@ricardo-jrm/use-date-format`
+# 🌘 `@ricardo-jrm/use-date-format`
 
 <b>Format dates with React</b>
 
