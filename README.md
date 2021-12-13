@@ -34,7 +34,18 @@ yarn add @ricardo-jrm/use-date-format
 ### <b>Usage</b>
 
 ```ts
-import { ExampleComponent, useExampleHook } from '@ricardo-jrm/use-date-format';
+import { useDateFormat, useDateRelative } from '@ricardo-jrm/use-date-format';
+
+useDateFormat(new Date('2022-01-31'))
+-> '12:00 AM - 31 Jan, 2022 GMT'
+
+useDateRelative(new Date('2022-01-31'))
+->  {
+      from: '2 months ago',
+      fromNow: 'in 2 months',
+      to: 'in 2 months',
+      toNow: '2 months ago',
+    }
 ```
 
 <br />
