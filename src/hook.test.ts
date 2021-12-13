@@ -1,19 +1,25 @@
-import { renderHook, act } from '@testing-library/react-hooks';
-import { useExampleHook } from '.';
+import { renderHook } from '@testing-library/react-hooks';
+import { useDateFormat, useDateRelative } from '.';
 
-describe('test example hook', () => {
-  it('should init as 69', () => {
-    const { result } = renderHook(() => useExampleHook<number>(69));
-    const [state] = result.current;
-    expect(state).toBe(69);
+describe('test useDateFormat hook', () => {
+  it('should format date', () => {
+    const mockHook = jest.fn(useDateFormat);
+    mockHook.mockReturnValue('12:00 AM - 31 Jan, 2022 GMT');
+    const { result } = renderHook(() => mockHook(new Date('2022-01-31')));
+    expect(result.current).toBe('12:00 AM - 31 Jan, 2022 GMT');
   });
-  it('should update to 1337', () => {
-    const { result } = renderHook(() => useExampleHook<number>(69));
-    const [state, stateSet] = result.current;
-    act(() => {
-      stateSet(1337);
+});
+
+describe('test useDateRelative hook', () => {
+  it('should get relative time', () => {
+    const mockHook = jest.fn(useDateRelative);
+    mockHook.mockReturnValue({
+      from: '2 months ago',
+      fromNow: 'in 2 months',
+      to: 'in 2 months',
+      toNow: '2 months ago',
     });
-    const [newState] = result.current;
-    expect(newState).toBe(1337);
+    const { result } = renderHook(() => mockHook(new Date('2022-01-31')));
+    expect(result.current.to).toBe('in 2 months');
   });
 });

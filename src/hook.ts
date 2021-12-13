@@ -1,11 +1,14 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useMemo } from 'react';
+import { dateFormat, dateRelative } from '@ricardo-jrm/date-format';
 
 /**
- * useExampleHook
+ * Format dates with dayjs
  */
-export const useExampleHook = <T>(
-  initialValue: T,
-): [T, Dispatch<SetStateAction<T>>] => {
-  const [state, stateSet] = useState<T>(initialValue);
-  return [state, stateSet];
-};
+export const useDateFormat = (date: Date, format?: string) =>
+  useMemo(() => dateFormat(date, format), [date, format]);
+
+/**
+ * Relative time helpers
+ */
+export const useDateRelative = (date: Date) =>
+  useMemo(() => dateRelative(date), [date]);

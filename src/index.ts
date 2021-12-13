@@ -1,3 +1,1 @@
-export { ExampleComponent } from './component';
-
-export { useExampleHook } from './hook';
+export { useDateFormat, useDateRelative } from './hook';
