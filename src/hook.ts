@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { dateFormat, dateRelative } from '@ricardo-jrm/date-format';
+import { dateFormat, dateRelative } from '@ricardojrmcom/date-format';
 
 /**
  * Format dates with dayjs
